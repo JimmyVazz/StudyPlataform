@@ -11,19 +11,21 @@ router.get('/', (req, res, next) => {
 router.get('/login', (req, res) =>{
   res.render('login')
 })
-/* Login de usuarios insert */
+/* Login de usuarios READ */
 
 /* Registro de usuarios vista */
 router.get('/registro', (req, res) => {
   res.render('registro')
 })
-/* Registro de usuarios insert */
-router.post('/registro', (req, res) => {
-  console.log(req.body)
+/* Registro de usuarios CREATE */
+router.post('/registro', async(req, res) => {
   User.create(req.body)
   .then(user => {
     res.redirect('/login')
   }).catch(e => res.render('error'))
+
+
+
 })
 
 module.exports = router;
